@@ -14,8 +14,7 @@ public class LoginTests extends BaseTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         /*
-      hello
-      NNNNN
+        HELLO
          */
 
         WebDriver driver = new ChromeDriver(options);
