@@ -12,7 +12,7 @@ public class Homework17 extends BaseTest {
    public void addSongToPlaylist() throws InterruptedException{
         String expectedSongAddedMessage ="Added 1 song into \"Val.\"";
 //steps
-launchBrowser();
+//launchBrowser();
 navigateLoginPage();
 provideEmail("valentyna.bihdash@testpro.io");
 providePassword("TestTest1!");
@@ -30,8 +30,9 @@ Thread.sleep(2000);
 
     public void searchSongName(String name) throws InterruptedException{
         WebElement searchField = driver.findElement(By.cssSelector("input[type='search']"));
-searchField.sendKeys(name);
         Thread.sleep(2000);
+searchField.sendKeys(name);
+
     }
 
     public void clickViewAll() throws InterruptedException{
