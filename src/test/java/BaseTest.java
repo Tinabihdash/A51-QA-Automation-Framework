@@ -51,7 +51,7 @@ public class BaseTest {
         passwordField.sendKeys(password);
 
     }
-    public void clickSubmit() throws InterruptedException{
+    public void clickSubmit(){
         WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         submit.click();
     }
