@@ -1,14 +1,18 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class Homework19 extends BaseTest {
 
 
     @Test
 
-    public void deletePlaylist()  throws InterruptedException{
+    public void deletePlaylist(){
         String expectedPlaylistDeleteMessage = "Delete the playlist \"Val\"?";
         navigateLoginPage();
         provideEmail("valentyna.bihdash@testpro.io");
@@ -16,27 +20,26 @@ public class Homework19 extends BaseTest {
         clickSubmit();
         clickOnPlaylist();
         clickOnRedButton();
-        Thread.sleep(2000);
-
+        //wait =new WebDriverWait(driver, Duration.ofSeconds(10));
         Assert.assertEquals(deletelist(),expectedPlaylistDeleteMessage);
 
     }
 
-    public void clickOnPlaylist() throws InterruptedException {
-        WebElement playlist = driver.findElement(By.xpath("//*[@id='playlists']/ul/li[3]"));
+    public void clickOnPlaylist() {
+        //WebElement playlist = driver.findElement(By.xpath("//*[@id='playlists']/ul/li[3]"));
+        WebElement playlist =wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='playlists']/ul/li[3]")));
         playlist.click();
-        Thread.sleep(2000);
-
     }
 
-    public void clickOnRedButton() throws InterruptedException {
-        WebElement redButton = driver.findElement(By.xpath("//*[@id='playlistWrapper']/header/div[3]/span/button[2]"));
+    public void clickOnRedButton()  {
+       // WebElement redButton = driver.findElement(By.xpath("//*[@id='playlistWrapper']/header/div[3]/span/button[2]"));
+       WebElement redButton =wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='playlistWrapper']/header/div[3]/span/button[2]")));
         redButton.click();
-        Thread.sleep(2000);
     }
 
     public String deletelist() {
-        WebElement notification = driver.findElement(By.xpath("//p[@class='msg']"));
+        //WebElement notification = driver.findElement(By.xpath("//p[@class='msg']"));
+        WebElement notification =wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='msg']")));
         return notification.getText();
 
     }
