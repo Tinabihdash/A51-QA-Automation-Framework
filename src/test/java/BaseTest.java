@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,6 +16,7 @@ public class BaseTest {
     public WebDriver driver = null;
     public String url = "https://qa.koel.app/";
     public WebDriverWait wait =null;
+   Actions actions;
 
     @BeforeSuite
     static void setupClass() {
@@ -30,7 +32,8 @@ public class BaseTest {
        driver  = new ChromeDriver(options);
        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
        wait =new WebDriverWait(driver,Duration.ofSeconds(10));
-url =BaseURL;
+actions =new Actions(driver);
+       url =BaseURL;
     }
     @AfterMethod
     public void closeBrowser() {
