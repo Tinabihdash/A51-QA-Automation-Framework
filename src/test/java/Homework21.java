@@ -11,7 +11,7 @@ public class Homework21 extends BaseTest{
 
     @Test
 public void renamePlaylist(){
-       String  UpdatePlaylistMsg = "Updated playlist\"New playlist.\"";
+       String  UpdatePlaylistMsg = "Updated playlist \"ValNew playlist.\"";
      //login
         provideEmail("valentyna.bihdash@testpro.io");
         providePassword("TestTest1!");

@@ -34,13 +34,14 @@ public class BaseTest {
        wait =new WebDriverWait(driver,Duration.ofSeconds(10));
 actions =new Actions(driver);
        url =BaseURL;
+       driver.get(url);
     }
     @AfterMethod
     public void closeBrowser() {
         driver.quit();
     }
     public void navigateLoginPage(){
-        driver.get(url);
+        //driver.get(url);
 
     }
 
