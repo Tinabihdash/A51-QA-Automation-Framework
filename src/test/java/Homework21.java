@@ -11,7 +11,7 @@ public class Homework21 extends BaseTest{
 
     @Test
 public void renamePlaylist(){
-       String  UpdatePlaylistMsg = "Updated playlist \"ValNew playlist.\"";
+       String  UpdatePlaylistMsg = "Updated playlist \"New playlist.\"";
      //login
         provideEmail("valentyna.bihdash@testpro.io");
         providePassword("TestTest1!");
@@ -30,12 +30,13 @@ public void renamePlaylist(){
         actions.doubleClick(playlistElement).perform();
     }
 
-    public void enterNewPlaylistName(){
-        WebElement inputPlaylistName =wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
-        inputPlaylistName.sendKeys(Keys.chord(Keys.CONTROL, "A",Keys.BACK_SPACE));
+    public void enterNewPlaylistName() {
+        WebElement inputPlaylistName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
+        inputPlaylistName.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.BACK_SPACE));
         inputPlaylistName.sendKeys(newPlayListName);
         inputPlaylistName.sendKeys(Keys.ENTER);
     }
+
 
     public String getRenamePlaylistSuccessMsg(){
         WebElement notification = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show"))));
