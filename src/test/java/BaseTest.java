@@ -13,10 +13,10 @@ import org.testng.annotations.*;
 import java.time.Duration;
 
 public class BaseTest {
-    public WebDriver driver = null;
-    public String url = "https://qa.koel.app/";
-    public WebDriverWait wait =null;
-   Actions actions;
+    public static WebDriver driver = null;
+    public static String url = null;
+    public static WebDriverWait wait =null;
+   public static Actions actions =null;
 
     @BeforeSuite
     static void setupClass() {
