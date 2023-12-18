@@ -20,6 +20,16 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
     @Test
+    public void validEmailPasswordTestPageFactory(){
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        loginPage.provideEmailToLogin("valentyna.bihdash@testpro.io");
+        loginPage.providePasswordToLogin("TestTest1!");
+        loginPage.clickSubmitToLogin();
+
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+    }
+    @Test
     public void loginEmptyEmailPassword() {
 
 //      Added ChromeOptions argument below to fix websocket error
