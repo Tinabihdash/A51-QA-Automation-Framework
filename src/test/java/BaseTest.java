@@ -33,6 +33,7 @@ public class BaseTest {
    @Parameters({"BaseURL"})
     public void launchBrowser(String BaseURL) throws MalformedURLException {
 driver =pickBrowser(System.getProperty("browser"));
+//
       // ChromeOptions options = new ChromeOptions();
       // options.addArguments("--remote-allow-origins=*");
 
