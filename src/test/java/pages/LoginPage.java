@@ -17,6 +17,12 @@ public class LoginPage extends BasePage{
     WebElement passwordTextField;
     @FindBy(css = "button[type='submit']")
     WebElement submitLoginButton;
+    @FindBy(css = "a#hel")
+    private WebElement registrationlink;
+
+   // public LoginPage(WebDriver,givenDriver){
+       // super (givenDriver);
+    //}
 
     //helper methods for PageFactory
     public void provideEmailToLogin(String email){
@@ -54,6 +60,9 @@ public class LoginPage extends BasePage{
         provideEmail("valentyna.bihdash@testpro.io");
         providePassword("TestTest1!");
         clickSubmit();
+    }
+    public  WebElement getRegistrationLink(){
+        return registrationlink;
     }
 }
 

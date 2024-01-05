@@ -10,11 +10,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
+import java.net.MalformedURLException;
 import java.time.Duration;
 
 public class BaseTest {
     public WebDriver driver = null;
     public String url = "https://qa.koel.app/";
+    //public String registrationlink = "";
     public WebDriverWait wait =null;
    Actions actions;
 
@@ -24,7 +26,21 @@ public class BaseTest {
     }
    @BeforeMethod
    @Parameters({"BaseURL"})
-    public void launchBrowser(String BaseURL){
+
+   public void setupBrowser(String BaseURL) throws MalformedURLException{
+        threadDriver.set(pickBrowser(System.getProperty("browser")));
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        navigateLoginPage(BaseURL);
+   }
+
+    private WebDriver pickBrowser(String "browser") {
+    }
+
+    public static WebDriver getDriver(){
+        return threadDriver.get();
+
+   }
+    /*public void launchBrowser(String BaseURL){
 
        ChromeOptions options = new ChromeOptions();
        options.addArguments("--remote-allow-origins=*");
@@ -35,7 +51,7 @@ public class BaseTest {
 actions =new Actions(driver);
        url =BaseURL;
        driver.get(url);
-    }
+    }*/
     @AfterMethod
     public void closeBrowser() {
         driver.quit();
