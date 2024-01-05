@@ -19,13 +19,15 @@ import java.time.Duration;
 
 public class BaseTest {
    // public WebDriver driver = null;
-    public static WebDriver driver = null;
-    public String url = "https://qa.koel.app/";
+
+    //public String url = "https://qa.koel.app/";
     //private  String BaseURL = "https://qa.koel.app/";
     //public String registrationlink = "";
     public WebDriverWait wait =null;
+    public static WebDriver driver = null;
+    public static String url =null;
     public static final ThreadLocal <WebDriver> threadDriver = new ThreadLocal<>();
-   Actions actions;
+   public static Actions actions = null;
 
     @BeforeSuite
     static void setupClass() {
