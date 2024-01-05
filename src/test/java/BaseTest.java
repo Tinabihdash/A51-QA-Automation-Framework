@@ -4,13 +4,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.time.Duration;
 
 public class BaseTest {
@@ -33,7 +37,27 @@ public class BaseTest {
         navigateLoginPage(BaseURL);
    }
 
-    private WebDriver pickBrowser(String "browser") {
+    public static WebDriver pickBrowser(String browser) throws MalformedURLException {
+        DesiredCapabilities caps = new DesiredCapabilities();
+        String gridUrl = "http://10.0.0.206:4444";
+
+        switch (browser){
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                return driver = new FirefoxDriver();
+            case"grid-edge": //gradle clean test -Dbrowser=grid-edge
+                caps.setCapability("browser", "MicrosoftEdge");
+                return driver = new RemoteWebDriver(URI.create(gridUrl).toURL(),caps);
+            case"grid-chrome": //gradle clean test -Dbrowser=grid-chrome
+                caps.setCapability("browserName", "chrome");
+                return driver = new RemoteWebDriver(URI.create(gridUrl).toURL(),caps);
+            default:
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--remote-allow-origins=*");
+                return driver=new ChromeDriver(options);
+        }
+
     }
 
     public static WebDriver getDriver(){
