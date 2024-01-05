@@ -13,6 +13,7 @@ public class LoginTests extends BaseTest {
     @Test
     public  void loginSuccessTest(){
        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homepage = new HomePage (getDriver());
         loginPage.provideEmail("valentyna.bihdash@testpro.io");
         loginPage.providePassword("TestTest1!");
         loginPage.clickSubmit();
