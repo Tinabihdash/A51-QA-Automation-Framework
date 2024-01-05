@@ -1,15 +1,11 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
 public class Homework17 extends BaseTest {
+    private String baseUrl = "https://qa.koel.app/";
 
 
     @Test
@@ -17,7 +13,7 @@ public class Homework17 extends BaseTest {
         String expectedSongAddedMessage ="Added 1 song into \"Val.\"";
 //steps
 //launchBrowser();
-navigateLoginPage();
+navigateLoginPage(baseUrl);
 provideEmail("valentyna.bihdash@testpro.io");
 providePassword("TestTest1!");
 clickSubmit();

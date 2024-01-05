@@ -5,9 +5,11 @@ import org.testng.annotations.Test;
 
 public class Homework18 extends BaseTest {
 
-   @Test
+    private String baseUrl = "https://qa.koel.app/";
+
+    @Test
     public void playSong() {
-      navigateLoginPage();
+      navigateLoginPage(baseUrl);
         provideEmail("valentyna.bihdash@testpro.io");
         providePassword("TestTest1!");
         clickSubmit();

@@ -8,7 +8,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
@@ -18,10 +17,13 @@ import java.net.URI;
 import java.time.Duration;
 
 public class BaseTest {
-    public WebDriver driver = null;
+   // public WebDriver driver = null;
+    public static WebDriver driver = null;
     public String url = "https://qa.koel.app/";
+    //private  String BaseURL = "https://qa.koel.app/";
     //public String registrationlink = "";
     public WebDriverWait wait =null;
+    public static final ThreadLocal <WebDriver> threadDriver = new ThreadLocal<>();
    Actions actions;
 
     @BeforeSuite
@@ -36,7 +38,10 @@ public class BaseTest {
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         navigateLoginPage(BaseURL);
    }
+    public static WebDriver getDriver(){
+        return threadDriver.get();
 
+    }
     public static WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridUrl = "http://10.0.0.206:4444";
@@ -60,11 +65,9 @@ public class BaseTest {
 
     }
 
-    public static WebDriver getDriver(){
-        return threadDriver.get();
 
-   }
-    /*public void launchBrowser(String BaseURL){
+   /*@BeforeMethod
+    public void launchBrowser(String BaseURL){
 
        ChromeOptions options = new ChromeOptions();
        options.addArguments("--remote-allow-origins=*");
@@ -76,11 +79,17 @@ actions =new Actions(driver);
        url =BaseURL;
        driver.get(url);
     }*/
-    @AfterMethod
+
+   /*@AfterMethod
     public void closeBrowser() {
         driver.quit();
+    }*/
+    @AfterMethod
+    public void tearDown() {
+    threadDriver.get().close();
+    threadDriver.remove();
     }
-    public void navigateLoginPage(){
+    public void navigateLoginPage(String BaseURL){
         //driver.get(url);
 
     }
