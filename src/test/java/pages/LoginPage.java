@@ -17,8 +17,8 @@ public class LoginPage extends BasePage{
     WebElement passwordTextField;
     @FindBy(css = "button[type='submit']")
     WebElement submitLoginButton;
-    @FindBy(css = "a#hel")
-    private WebElement registrationlink;
+    @FindBy(css = "a[href='registration']")
+    WebElement registrationlink;
 
    // public LoginPage(WebDriver,givenDriver){
        // super (givenDriver);

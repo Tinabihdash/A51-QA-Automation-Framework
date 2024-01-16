@@ -9,16 +9,72 @@ import pages.LoginPage;
 import java.time.Duration;
 
 public class LoginTests extends BaseTest {
+    @Test
+    public static void loginEmptyEmailPasswordTest() {
+        LoginPage loginPage = new LoginPage(getThreadLocal());
+
+        loginPage.provideEmail("");
+                loginPage.providePasswordToLogin("te$t$tudent");
+              loginPage.clickSubmitToLogin();
+
+        Assert.assertTrue(loginPage.getRegistrationLink().isDisplayed());
+    }
+
+   /* @Test
+    public static void loginWrongPasswordTest() {
+        LoginPage loginPage = new LoginPage(getThreadLocal());
+
+        loginPage.provideEmail("demo@class.com");
+        loginPage.providePasswordToLogin("te$t$tudent00");
+        loginPage.clickSubmitToLogin();
+
+        Assert.assertTrue(loginPage.getRegistrationLink().isDisplayed());
+    }
 
     @Test
+    public static void loginEmptyPasswordTest() {
+        LoginPage loginPage = new LoginPage(getThreadLocal());
+
+        loginPage.provideEmail("demo@class.com");
+        loginPage.providePasswordToLogin("");
+        loginPage.clickSubmitToLogin();
+
+        Assert.assertTrue(loginPage.getRegistrationLink().isDisplayed());
+    }
+
+    @Test
+    public static void loginWrongEmailTest() {
+        LoginPage loginPage = new LoginPage(getThreadLocal());
+
+        loginPage.provideEmail("demo9@class.com");
+        loginPage.providePasswordToLogin("te$t$tudent");
+        loginPage.clickSubmitToLogin();
+
+        Assert.assertTrue(loginPage.getRegistrationLink().isDisplayed());
+    }*/
+    @Test
     public  void loginSuccessTest(){
-       LoginPage loginPage = new LoginPage(getDriver());
-        HomePage homepage = new HomePage (getDriver());
+        LoginPage loginPage = new LoginPage(getThreadLocal());
+        HomePage homePage = new HomePage(getThreadLocal());
         loginPage.provideEmail("valentyna.bihdash@testpro.io");
         loginPage.providePassword("TestTest1!");
         loginPage.clickSubmit();
-        Assert.assertTrue(loginPage.getRegistrationLink().isDisplayed());
+       //Assert.assertTrue(loginPage.getRegistrationLink().isDisplayed());
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
+
+
+    //  @Test
+    /*public void loginSucceedTest() {
+        LoginPage loginPage = new LoginPage(getThreadLocal());
+        HomePage homePage = new HomePage(getThreadLocal());
+
+        loginPage.provideLoginSucceed();
+
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+    }
+}
+
 
 
 
