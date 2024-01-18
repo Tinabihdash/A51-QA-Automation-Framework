@@ -6,13 +6,15 @@
 
     <test name="Example Test" preserve-order="false">
             <classes>
-                <class name="LoginTests"/>
-            </classes>
-           <!-- <class name="BaseTest"/>
+                <class name ="CucumberRunner"> </class>
+                <!--
+                <class name="LoginTests"/
+            <class name="BaseTest"/>
             <class name="Homework16"/>
             <class name="Homework17"/>
             <class name="Homework18"/>
             <class name="Homework19"/>
             <class name="Homework21"/>-->
+            </classes>
     </test>
 </suite>
